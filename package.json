@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "csrf-token": "^1.1.0"
+  }
+}
