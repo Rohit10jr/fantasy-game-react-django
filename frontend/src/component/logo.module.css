@@ -1,0 +1,8 @@
+  /* Position the logo over the background */
+  .logoPng {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1; /* Above the background image */
+  }
+  
