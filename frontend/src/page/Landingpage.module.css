@@ -1,0 +1,4 @@
+html, body {
+  height: auto; /* Ensure height is not limited */
+  overflow: auto; /* Enable scrolling */
+}

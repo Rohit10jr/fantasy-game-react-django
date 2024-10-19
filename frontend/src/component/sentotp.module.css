@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML and body styling */
+html,
+body {
+  background-color: crimson;
+
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background-image: url("../images/bg1.png");
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.otpContainer {
+  width: 795px;
+  height: 635px;
+  padding: 50px;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+}
+
+.verifySection {
+  width: 560px;
+  height: 240px;
+  text-align: left;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.verifySection h1 {
+  font-size: 1.2rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.verifySection p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px; /* Adjust margin for spacing */
+}
+
+.otpInputGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px; /* Adjust space between inputs and other elements */
+}
+
+.otpInputGroup input {
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  /* background-color: #ffffff !important;
+  padding-left: 0px !important; */
+}
+
+.otpInputGroup input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.resendCode {
+  margin-bottom: 10px;
+}
+
+.resendCode a {
+  color: gray;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.resendCode span {
+  font-weight: bold;
+}
+
+.verifyBtn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+}
+
+.verifyBtn:hover {
+  background-color: #0056b3;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0; /* Add space around the divider */
+}
+
+.divider img {
+  width: 100%; /* Divider image fills width */
+  max-width: 560px; /* Align with the inner section width */
+}
+
+.verifySection h1 {
+  font-size: 1.2rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.verifySection p,
+.otpInputGroup,
+.resendCode,
+.verifyBtn {
+  margin-left: 20px; /* Indent all lines after the number for proper alignment */
+}
+
+.blue {
+  color: #0056b3;
+}

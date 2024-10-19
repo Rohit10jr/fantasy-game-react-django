@@ -1,27 +1,30 @@
 // import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-// import LoginPages from './pages/demo-page/1login';
+// import LoginPage from './pages/demo-page/1login';
 // import RegistrationPage from './pages/demo-page/1register.tsx';
 // import HomePage from './pages/demo-page/1home.tsx';
-import RegisterPage from './pages/RegisterPage.tsx';
-import LoginPage from './pages/LoginPage.tsx';
-import MainComponent from './pages/MainComponent.tsx';
+// import RegisterPage from './pages/RegisterPage.tsx';
+// import LoginPage from './pages/LoginPage.tsx';
+// import MainComponent from './pages/MainComponent.tsx';
+
 import NotFoundPage from './pages/NotFoundPage';
-
 import LogoutPage from './pages/LogoutPage'; 
+import ProtectedRoute from './component/ProtectedRoute.tsx'; 
 
-import ProtectedRoute from './components/ProtectedRoute'; // Adjust the import path
-
-// new compnonet and page import
+// new component and page import
 
 import SignupPage from './page/RegisterPage.tsx';
 import LoginPages from './page/LoginPage.tsx';
 import NewRound from './page/newRounds.tsx';
 // import Elements from './page/Elements.tsx';
-import Design from './page/Elements.tsx';
+// import Design from './page/Elements.tsx';
 import MyRound from './page/myRounds.tsx';
-import styles from './component/capsule.module.css';
 import PublicRoute from './component/PublicRoute.tsx';
+import Landingpage from './page/Landingpage.tsx';
+import Reset from './page/ResetPassword.tsx';
+import Verify from './page/verifyotp.tsx';
+import ForgotPage from './page/forgetpage.tsx';
+import Otp from './page/sentotp.tsx';
 
 function App() {
   return (
@@ -38,9 +41,11 @@ function App() {
 
           {/* new upadted pages route */}
 
-          {/* <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPages/>} /> */}
-           <Route path="/" element={<LoginPage />} />
+          <Route path="/" element={<Landingpage />} />
+          <Route path="/reset" element={< Reset/>} />
+          <Route path="/verify" element={< Verify/>} />
+          <Route path="/otp" element={< Otp/>} />
+          <Route path="/forgot" element={< ForgotPage/>} />
           <Route path="/login" element={<PublicRoute element={<LoginPages />} />} />
           <Route path="/register" element={<PublicRoute element={<SignupPage />} />} />
           <Route path="/home" element={<ProtectedRoute element={<NewRound />} />} />

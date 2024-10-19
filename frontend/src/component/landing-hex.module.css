@@ -1,0 +1,69 @@
+.hexContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.hexWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.innerHex {
+    width: 100px;
+    height: 80px;
+    background-color: #e8ff8e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 14px;
+    z-index: 1;
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+}
+
+.innerHex h2 {
+    margin: 0;
+    font-size: 55px;
+    font-weight: 700;
+    font-family: "Franklin Gothic", Arial, sans-serif;
+    color: #027d1d;
+}
+
+.outerHex {
+    width: 900px;
+    height: 100px;
+    background-color: #ffffff;
+    clip-path: polygon(3.7% 0, 96.3% 0, 100% 50%, 96.3% 100%, 3.7% 100%, 0 50%);
+    display: flex;
+    align-items: center;
+    padding-left: 120px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #027d1d;
+}
+
+.hexContent {
+    text-align: left;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+.hexContent h3 {
+    font-weight: 900;
+    font-size: 16px;
+    color: #3e6b48;
+    margin: 5px 0;
+}
+
+.hexContent span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #606060;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    display: block;
+}

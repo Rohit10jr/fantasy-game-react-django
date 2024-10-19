@@ -1,0 +1,138 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* HTML and body styling */
+  html,
+  body {
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    background-color: crimson;
+  
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    /* background-image: url("/images/bg1.png"); */
+    background-image: url('../images/bg1.png');
+  }
+  
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+    /* z-index: 1; */
+  }
+  
+
+
+/* ---------------------------- */
+
+.verifyContainer {
+    width: 458.76px;
+    height: 524.28px;
+    padding: 50px;
+
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    position: absolute;
+    /* z-index: 2; */
+  }
+
+  /*  verifytitle */
+
+  .verifyTitle {
+    text-align: center;
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    /* margin-bottom: 20px; */
+  }
+
+  .verifyTitle > h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #333;
+    /* margin-bottom: 10px; */
+  }
+
+  .verifyTitle > p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 40px;
+  }
+
+
+
+  .verifyButton {
+    width: 100%;
+    height: 50px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .verifyButton:hover {
+    background-color: #006fe6;
+  }
+
+  .otpInputGroup {
+display: flex;
+justify-content: center;
+gap: 10px;
+margin-bottom: 15px;
+}
+
+.otpInputGroup input {
+width: 50px;
+height: 50px;
+font-size: 1.5rem;
+text-align: center;
+border: 1px solid #ccc;
+border-radius: 5px;
+transition: border-color 0.3s ease;
+}
+
+.otpInputGroup input:focus {
+outline: none;
+border-color: #007bff;
+}
+
+.resendCode {
+margin-top: 25px;
+margin-bottom: 15px;
+/* color: black; */
+}
+
+.resendCode a {
+color: gray;
+text-decoration: none;
+font-size: 0.85rem;
+}
+
+.resendCode span {
+font-weight: bold;
+color: #007bff;
+}
+
+.verifyTitle span{
+color: black;
+}
+
+
