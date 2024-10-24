@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 // import LoginPage from './pages/LoginPage.tsx';
 // import MainComponent from './pages/MainComponent.tsx';
 
-import NotFoundPage from './pages/NotFoundPage';
-import LogoutPage from './pages/LogoutPage'; 
+import NotFoundPage from './page/NotFoundPage';
+import LogoutPage from './page/LogoutPage'; 
 import ProtectedRoute from './component/ProtectedRoute.tsx'; 
 
 // new component and page import
@@ -25,6 +25,7 @@ import Reset from './page/ResetPassword.tsx';
 import Verify from './page/verifyotp.tsx';
 import ForgotPage from './page/forgetpage.tsx';
 import Otp from './page/sentotp.tsx';
+import ForgotVerify from './page/verifyotp2.tsx';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/" element={<Landingpage />} />
           <Route path="/reset" element={< Reset/>} />
           <Route path="/verify" element={< Verify/>} />
+          <Route path="/forgotverify" element={< ForgotVerify/>} />
           <Route path="/otp" element={< Otp/>} />
           <Route path="/forgot" element={< ForgotPage/>} />
           <Route path="/login" element={<PublicRoute element={<LoginPages />} />} />

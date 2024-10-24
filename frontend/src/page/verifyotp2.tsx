@@ -5,34 +5,30 @@ import Logo from "../component/logo.tsx";
 import styles from "./verifyotp.module.css";
 import { useNavigate } from 'react-router-dom';
 
-const Verify = () => {
+const ForgotVerify = () => {
     const [otp, setOtp] = useState(new Array(4).fill(""));
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
-
     const navigate = useNavigate(); 
 
     useEffect(() => {
         // Retrieve email from localStorage when the component mounts
-        const storedEmail = localStorage.getItem("email");
+        const storedEmail = localStorage.getItem("forgotemail");
         if (storedEmail) {
             setEmail(storedEmail);
         } else {
-            // Handle the case where email is missing
             setError("No email found. Please register again.");
         }
     }, []);
 
-
+    // Redirect to login after success message
     useEffect(() => {
         if (success) {
-            // Set a timeout to redirect after 3 seconds
             const timer = setTimeout(() => {
-                navigate("/login");  // Redirect to login page
+                navigate("/login");
             }, 3000);
 
-            // Cleanup the timer to avoid memory leaks
             return () => clearTimeout(timer);
         }
     }, [success, navigate]);
@@ -47,21 +43,23 @@ const Verify = () => {
         }
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/api/verify/", {
+            // Step 1: Verify OTP
+            const response = await axios.post("http://127.0.0.1:8000/api/forgotverify/", {
                 email,
                 otp: otpCode
             });
 
-            if (response.status === 200 && response.data.message) {
-                setSuccess(response.data.message);
+            // Check if the OTP verification is successful
+            if (response.status === 200) {
+                setSuccess("OTP verified successfully. You can now reset your password.");
                 setError("");
-                // alert("otp verified");
+                
+                // Step 2: Send reset password link
+                await sendResetLink();
             }
         } catch (error: unknown) {
-            // Check if it's an Axios error
             const err = error as AxiosError;
-            // if (err.response && err.response.data) {
-            //     setError((err.response.data as { error: string }).error); 
+
             if (err.response) {
                 if (err.response.status === 400) {
                     setError("Invalid OTP or user already verified.");
@@ -73,6 +71,22 @@ const Verify = () => {
             } else {
                 setError("An error occurred. Please try again.");
             }
+        }
+    };
+
+    // Function to send reset password link
+    const sendResetLink = async () => {
+        try {
+            const response = await axios.post("http://127.0.0.1:8000/api/send-reset-password-link/", { email });
+            if (response.status === 200) {
+                console.log("Reset password link sent successfully."); // Logging success message
+            } else {
+                setError("Failed to send the reset password link.");
+            }
+        } catch (error: unknown) {
+            const err = error as AxiosError;
+            console.error('Reset Password Link Error:', err); // Logging the error
+            setError("An error occurred while sending the reset password link.");
         }
     };
 
@@ -120,4 +134,4 @@ const Verify = () => {
     );
 };
 
-export default Verify;
+export default ForgotVerify;

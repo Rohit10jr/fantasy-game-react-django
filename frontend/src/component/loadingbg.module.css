@@ -1,0 +1,53 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  /* overflow: hidden; */
+  font-family: Arial, sans-serif;
+}
+
+  /* HTML and body styling */
+  .loadingBg  {
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    background-color: crimson;
+  
+    height: 100%;
+    overflow: hidden;
+    /* background-image: url("/images/bg1.png"); */
+    /* background-image: url('../images/bg1.png'); */
+  }
+
+
+  /* .loadingBg {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh; 
+    width: 100vw; 
+    background-color: crimson;
+    background-image: url('../images/bg1.png');
+    background-size: cover; 
+    overflow: hidden;
+}
+   */
+
+
+   .bgImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    object-fit: cover; /* Ensure the image covers the container */
+    z-index: -1; /* Behind other elements */
+  }

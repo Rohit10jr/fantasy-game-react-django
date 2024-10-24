@@ -14,8 +14,8 @@ const Header = () => {
         </div>
         <div className={styles.authlinks}>
           <p>Not a member yet?</p>
-          <a href="#">Register Now</a>
-          <button className={styles.loginbtn}>Login</button>
+          <a className={styles.registerAtag} href="/register">Register Now</a>
+          <a href="/login"className={styles.loginbtn}>Login</a>
         </div>
       </div>
       <div className={styles.horizontalline}></div>

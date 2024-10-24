@@ -7,7 +7,7 @@ const ContentSection = () => {
       <h1>Play Moneyball</h1>
       <h2>Pick your predictions and win Prizes!</h2>
       <p>Ready to kick off the excitement? Log in and let the game begin!</p>
-      <button className={styles.loginbtn}>Login</button>
+      <a href="/login" className={styles.loginbtn}>Login</a>
     </div>
   );
 };

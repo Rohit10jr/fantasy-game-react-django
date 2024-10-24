@@ -140,6 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     # "http://localhost:3000",
     "http://localhost:5173",
+    # "http://localhost:5174"
     # Add other origins if needed
 ]
 
@@ -157,3 +158,18 @@ REST_FRAMEWORK = {
 
 # redirects to login page 
 LOGIN_URL = '/api/login/'  # or use the name of your login URL pattern
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'rohit.devmind@gmail.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'ncze owke dxph darf'  # Replace with your email password
+
+
+
+# Testing in Development:
+# To test email sending in development, you can use Django’s console email backend:
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

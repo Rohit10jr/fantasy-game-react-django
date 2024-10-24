@@ -40,7 +40,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => (
       <input type="password" name="Password" placeholder="Password" required />
     </InputContainer>
 
-    <a href="#" className={styles.forgotText}>Forgot Password?</a>
+    <a href="/forgot" className={styles.forgotText}>Forgot Password?</a>
 
     <button type="submit" className={styles.loginButton}>Login</button>
     <p className={styles.signupText}>

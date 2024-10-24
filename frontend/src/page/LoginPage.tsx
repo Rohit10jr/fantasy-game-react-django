@@ -1,5 +1,5 @@
 import LoginForm from "../component/loginForm.tsx";
-import BackGround1 from "../component/backGround1.tsx";
+// import BackGround1 from "../component/backGround1.tsx";
 import styles from './LoginPage.module.css';
 import { useNavigate } from "react-router-dom";
 import Logo from "../component/logo.tsx";

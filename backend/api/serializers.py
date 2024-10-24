@@ -26,6 +26,10 @@ class RegisterSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             password=validated_data['password']
         )
+
+        # otp = user.set_otp()
+
+        # send the OTP via email here if needed
         return user
 
 class LoginSerializer(serializers.Serializer):

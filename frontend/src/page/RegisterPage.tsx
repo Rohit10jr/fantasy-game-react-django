@@ -31,8 +31,9 @@ const SignupPage = () => {
       });
 
       if (response.ok) {
+        localStorage.setItem('email', userData.email);
         // Redirect to login page upon successful registration
-        navigate('/login');
+        navigate('/verify');
       } else {
         // Handle errors here
         console.error('Registration failed');
