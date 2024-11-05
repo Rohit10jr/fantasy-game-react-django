@@ -27,6 +27,9 @@ import ForgotPage from './page/forgetpage.tsx';
 import Otp from './page/sentotp.tsx';
 import ForgotVerify from './page/verifyotp2.tsx';
 
+import Help from './page/help.tsx';
+import Buy from './page/1buy.tsx';
+
 function App() {
   return (
     <Router>
@@ -44,14 +47,19 @@ function App() {
 
           <Route path="/" element={<Landingpage />} />
           <Route path="/reset" element={< Reset/>} />
-          <Route path="/verify" element={< Verify/>} />
-          <Route path="/forgotverify" element={< ForgotVerify/>} />
-          <Route path="/otp" element={< Otp/>} />
           <Route path="/forgot" element={< ForgotPage/>} />
+          <Route path="/verify" element={<PublicRoute element={<Verify />} />} />
+          <Route path="/forgotverify" element={<PublicRoute element={<ForgotVerify />} />}/>
+          <Route path="/otp" element={<PublicRoute element={<Otp />} />}/>
+
           <Route path="/login" element={<PublicRoute element={<LoginPages />} />} />
           <Route path="/register" element={<PublicRoute element={<SignupPage />} />} />
           <Route path="/home" element={<ProtectedRoute element={<NewRound />} />} />
           <Route path="/myround" element={<ProtectedRoute element={<MyRound />} />} />
+
+          <Route path="/help"  element={<Help/>} />
+
+          <Route path="/buy" element={< Buy/>} />
           
           {/* <Route path="/design" element={<Design/>} /> */}
 

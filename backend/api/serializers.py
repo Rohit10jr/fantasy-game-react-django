@@ -1,7 +1,8 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
-from .models import CustomUser
+from .models import CustomUser, PurchaseToken
+from django.contrib.auth import get_user_model
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
@@ -46,3 +47,38 @@ class LoginSerializer(serializers.Serializer):
 
         attrs['user'] = user
         return attrs
+
+
+# token serializer
+
+User = get_user_model()
+
+class TokenSerializer(serializers.ModelSerializer):
+    # Accept email instead of user ID
+    email = serializers.EmailField(write_only=True)
+
+    class Meta:
+        model = PurchaseToken
+        fields = ['id', 'user', 'email', 'quantity', 'purchase_date']
+        read_only_fields = ['id', 'purchase_date', 'user']
+
+    def create(self, validated_data):
+        # Get email and quantity from validated data
+        email = validated_data.pop('email')
+        # quantity = validated_data.get('quantity')
+
+        # Look up user by email
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            raise serializers.ValidationError("User with this email does not exist.")
+        
+        # token = PurchaseToken.objects.create(user=user, quantity=quantity)
+
+        token, created = PurchaseToken.objects.get_or_create(user=user)
+
+        token.quantity += validated_data.get('quantity', 0)  # Add new quantity to existing quantity
+        
+        token.save() 
+        return token
+

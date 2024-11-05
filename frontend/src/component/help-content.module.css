@@ -1,0 +1,161 @@
+.content {
+    max-width: 1000px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: column; */
+    align-items: center;
+    color: white;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+  }
+
+  .content h1{
+    font-size: 38px;
+    margin: 5px;
+    font-weight: 100;
+  }
+
+  .content p {
+    font-size: 15px;
+    color: #d9d9d9;
+    margin: 5px;
+  }
+
+
+  
+
+
+
+  .form-container {
+    width: 1000px;
+    height: 450px;
+    padding: 40px 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .form-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    /* border: 2px red solid; */
+    /* Adjust gap for better control */
+  }
+
+  .form-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    gap: 10px; /* Optional: Add gap between fields */
+  }
+  
+  .form-row .form-group {
+    flex: 1; /* Each field takes equal space */
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .form-group input:hover,
+  .form-group select:hover,
+  .form-group textarea:hover {
+    border-color: #007bff;
+    outline: none;
+    background-color: #f0f0f0;
+  }
+
+  .form-group input[placeholder]:not(:placeholder-shown),
+.form-group select:not(:placeholder-shown),
+.form-group textarea:not(:placeholder-shown) {
+    background-color: #f0f0f0;
+  }
+
+  .form-group textarea {
+    margin-top: 0px;
+    height: 150px;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+   
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .submit-btn {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .cancel-btn {
+    background-color: #6c757d;
+    color: white;
+  }
+
+  .submit-btn:hover {
+    background-color: #0056b3; 
+  }
+
+  .cancel-btn:hover {
+    background-color: #5a6268; 
+  }
+
+  #issueSelect {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff; 
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+
+  #issueSelect:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  #issueSelect:hover {
+    border-color: #007bff;
+    outline: none;
+    background-color: #f0f0f0;
+  }

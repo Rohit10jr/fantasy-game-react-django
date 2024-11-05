@@ -10,7 +10,8 @@ const LandingFooter = () =>{
         © Copyrights Reserved <a href="#">@Moneyball</a>
         </div>
 
-        <div className={styles.footerRight}>
+        <div className={styles.footerRight}>            
+            <a href="/help">Help</a>
             <a href="">Rules</a>
             <a href="">Privacy Policy</a>
             <a href="">Terms & Conditions</a>

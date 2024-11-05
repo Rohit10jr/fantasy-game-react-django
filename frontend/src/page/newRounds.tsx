@@ -4,27 +4,28 @@ import PlayerCard from "../component/cardDetail.tsx";
 import Header from "../component/header.tsx";
 import Logo from "../component/logo.tsx";
 import styles from './newRounds.module.css';
+// import Header from '../component/landing-header.tsx'
 
 const NewRound=()=>{
     return (<>
-    <div className={styles.container}>
-        <Logo/>
+    {/* <div className={styles.container}> */}
+        {/* <Logo/> */}
         <BackGround2/>
-        <div className={styles.header}>
-        <Header/>
+        {/* <div className={styles.header}> */}
+        <Header />
         <Capsule/>
             {/* <div className="header1"></div> */}
             {/* logo user name hamburger nav */}
             {/* <div className="header2"> */}
                 {/* new roudns and my roudns btn */}
             {/* </div> */}
-        </div>
+        {/* </div> */}
         <div className={styles.mainContainer}>
             <PlayerCard/>
             <PlayerCard/>
             <PlayerCard/>
         </div>
-    </div>
+    {/* </div> */}
 
     </>
     )

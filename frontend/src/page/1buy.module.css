@@ -1,0 +1,108 @@
+/* Card container styling */
+.outerContainer {
+    width: 460px;
+    height: 270px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    /* position: absolute; */
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; */
+    /* opacity: 0; */
+    /* visibility: hidden; */
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Show card when active */
+/* .outerContainer.active {
+    opacity: 1;
+    visibility: visible;
+} */
+
+/* Inner container with adjusted dimensions */
+.innerContainer {
+    width: 390px;
+    height: 215px;
+    background-color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.innerContainer h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* Token options with adjusted dimensions */
+.tokenOptions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tokenOption {
+    width: 88px;
+    height: 36px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 14px;
+}
+
+.tokenOption:hover {
+    background-color: #e0f7fa;
+    border-color: #00796b;
+}
+
+/* Buy tokens button with adjusted dimensions */
+.buyTokensButton {
+    width: 256px;
+    height: 40px;
+    background-color: #00c853;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonIcon {
+    margin-left: 8px;
+    width: 14px;
+    height: 14px;
+}
+
+.buyTokensButton:hover {
+    background-color: #009624;
+}
+
+/* Security message with reduced font size */
+.securityMessage {
+    font-size: 12px;
+    color: #757575;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.securityIcon {
+    margin-left: 4px;
+}

@@ -3,6 +3,9 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    z-index: 1; /* Above the background image */
+    z-index: 1; 
+    height: 50px;
+
+    /* Above the background image */
   }
   

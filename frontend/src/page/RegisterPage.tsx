@@ -5,20 +5,26 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../component/logo.tsx";
 import bgImage from '../images/bg1.png';
 
+
 const SignupPage = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-
+  // Formik `onSubmit` handler that receives form values instead of `event`
+  const handleSubmit = async (values: {
+    first_name: string;
+    last_name: string;
+    mobile: string;
+    email: string;
+    password: string;
+    confirm_password: string;
+  }) => {
     const userData = {
-      first_name: formData.get('first_name') as string,
-      last_name: formData.get('last_name') as string,
-      mobile: formData.get('mobile') as string,
-      email: formData.get('email') as string,
-      password: formData.get('password') as string,
-      confirm_password: formData.get('confirm_password') as string,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      mobile: values.mobile,
+      email: values.email,
+      password: values.password,
+      confirm_password: values.confirm_password,
     };
 
     try {
@@ -32,7 +38,7 @@ const SignupPage = () => {
 
       if (response.ok) {
         localStorage.setItem('email', userData.email);
-        // Redirect to login page upon successful registration
+        // Redirect to verification page upon successful registration
         navigate('/verify');
       } else {
         // Handle errors here
@@ -42,19 +48,17 @@ const SignupPage = () => {
       console.error('An error occurred:', error);
     }
   };
-  
-    return (
-      <>
-      <div className={styles.container}>
-        <Logo/>
-        {/* <BackGround1/> */}
-        <img className={styles.bgImg} src={bgImage} alt="Background" />
-        <div className={styles.registerContainer}>
+
+  return (
+    <div className={styles.container}>
+      <Logo />
+      <img className={styles.bgImg} src={bgImage} alt="Background" />
+      <div className={styles.registerContainer}>
+        {/* Pass handleSubmit directly to Formik as an onSubmit prop */}
         <RegisterForm onSubmit={handleSubmit} />
-        </div>
       </div>
-      </>
-    );
-  };
-  
-  export default SignupPage;
+    </div>
+  );
+};
+
+export default SignupPage;

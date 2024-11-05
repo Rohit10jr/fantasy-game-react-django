@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
-from .models import CustomUser
+from .models import CustomUser, PurchaseToken
 
 class UserAdmin(BaseUserAdmin):
     fieldsets = (
@@ -24,3 +24,4 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
 
 admin.site.register(CustomUser, UserAdmin)
+admin.site.register(PurchaseToken)

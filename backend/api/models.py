@@ -79,3 +79,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class PurchaseToken(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete= models.CASCADE,related_name='purchased_tokens')
+    quantity = models.PositiveIntegerField(default=0)
+    purchase_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.quantity} tokens for {self.user.email}'  
+    
+    class Meta:
+        verbose_name = "Token Purchase"

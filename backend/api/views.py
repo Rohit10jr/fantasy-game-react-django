@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -6,8 +7,8 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
-from .models import CustomUser
-from .serializers import RegisterSerializer, LoginSerializer
+from .models import CustomUser,PurchaseToken
+from .serializers import RegisterSerializer, LoginSerializer, TokenSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.core.mail import send_mail
 from .utils import generate_otp, send_otp_email
@@ -127,7 +128,7 @@ class RegisterView(generics.CreateAPIView):
         send_mail(
             'Verify your email',
             f'Your OTP code is: {otp}',
-            'rohit.devmind@gmail.com', 
+            'your email id', 
             [user.email],
             fail_silently=False,
         )
@@ -258,7 +259,79 @@ def forgot_password(request):
 
     except CustomUser.DoesNotExist:
         return Response({'message': 'User with this email does not exist.'}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def help(request):
+    # Retrieve email, title, and message from the request data
+    email = request.data.get('email')
+    title = request.data.get('issue')
+    message = request.data.get('description')
+
+    if not email or not title or not message:
+        return Response({"error": "Email, title, and message fields are required."}, status=400)
+
+    # Send email to the support team
+    try:
+        send_mail(
+            subject=title,
+            message=message,
+            from_email='rohit.devmind@gmail.com',
+            recipient_list=[email], 
+            fail_silently=False,
+        )
+        return Response({"success": "Help request sent successfully."}, status=200)
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
+
+
+
+# token purchase CRUD
+class TokenCreateView(generics.CreateAPIView):
+    queryset = PurchaseToken.objects.all()
+    serializer_class = TokenSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class UserTokenListView(generics.ListAPIView):
+    serializer_class = TokenSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # return super().get_queryset()
+        # data = PurchaseToken.objects.filter(user=self.request.user)
+        # print(data)
+        return PurchaseToken.objects.filter(user=self.request.user)
     
+
+class TokenDetailView(generics.RetrieveUpdateDestroyAPIView):
+    # queryset = PurchaseToken.objects.all()
+    serializer_class = TokenSerializer
+    permission_classes =  [IsAuthenticated]
+
+    # def get_queryset(self):
+    #     queryset = PurchaseToken.objects.filter(user=self.request.user)
+    #     return PurchaseToken.objects.filter(user=self.request.user)
+
+    def get_object(self):
+        queryset = PurchaseToken.objects.filter(user=self.request.user)
+        token = queryset.first()
+        if token is None:
+            raise Http404("No token found for this user.")
+        return token
+
+
+
+
+
+
+
+
+
+
 
 # @api_view(['POST'])
 # def verify_otp(request):

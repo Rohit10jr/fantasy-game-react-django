@@ -2,7 +2,9 @@ import React, { FC, FormEvent } from "react";
 import styles from './loginForm.module.css';
 import emailIcon from '../images/email.png';
 import lockIcon from '../images/lock.png';
-import vectorIcon from '../images/vector13.png'; 
+import vectorIcon from '../images/vector13.png';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup"; 
 // Assuming the second image is named vector13.png
 
 interface InputContainerProps {

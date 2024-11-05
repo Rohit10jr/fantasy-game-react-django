@@ -14,10 +14,6 @@ const Header: React.FC = () => {
 
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
-    const [purchaseTokens, setPurchaseTokens] = useState<number | null>(null);
-    const [isCardVisible, setIsCardVisible] = useState(false);
-    const [selectedQuantity, setSelectedQuantity] = useState<number | null>(null);
-    const cardRef = useRef<HTMLDivElement>(null);
   
     useEffect(() => {
       // Retrieve name and email from local storage
@@ -28,78 +24,13 @@ const Header: React.FC = () => {
       setEmail(email);
     }, []);
 
-
-          // Fetch purchase token count from the backend
-          const fetchTokens = async () => {
-            const token = localStorage.getItem('token'); // Get auth token from localStorage
-            if (token) {
-              try {
-                const response = await fetch('http://127.0.0.1:8000/api/tokens/', {
-                  method: 'GET',
-                  headers: {
-                    'Authorization': `Token ${token}`,
-                    'Content-Type': 'application/json',
-                  },
-                });
-      
-                if (response.ok) {
-                  const data = await response.json();
-                  if (Array.isArray(data) && data.length > 0) {
-                    setPurchaseTokens(data[0].quantity); // Access quantity of the first object
-                    console.log("data got", data[0].quantity);
-                  } else {
-                    console.error("No tokens found");
-                  }
-                } else {
-                  console.error('Failed to fetch tokens');
-                }
-              } catch (error) {
-                console.error('Error:', error);
-              }
-            }
-          };    
-
-    useEffect(() => {
-
-      fetchTokens();
-    }, []); // Run once on mount
-
-  
+  const [isCardVisible, setIsCardVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     const menu = document.getElementById("dropdownMenu");
     if (menu) {
       menu.classList.toggle(styles.show);
-    }
-  };
-
-  const handleBuyTokens = async () => {
-    const token = localStorage.getItem('token'); 
-
-    if (token && email && selectedQuantity !== null) {
-      try {
-        const response = await fetch('http://127.0.0.1:8000/api/tokens/create/', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Token ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, quantity: selectedQuantity }),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Purchase successful:', data);
-          // alert('Purchase successful');
-          fetchTokens();
-          setIsCardVisible(false);
-          setSelectedQuantity(null);
-        } else {
-          console.error('Failed to purchase tokens');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
     }
   };
 
@@ -135,8 +66,8 @@ const Header: React.FC = () => {
         <span className={styles.spanNav}>
           <div className={styles.tokenadd} onClick={toggleCard}>
             <img src={wallet} alt="Wallet Icon" />
-            {/* <a href="#">22 Token</a> */}
-            <a href="#">{purchaseTokens !== null ? `${purchaseTokens} Tokens` : 'Buy Token'}</a>
+            <a href="#">22 Token</a>
+            {/* <a href="#">{purchaseTokens !== null ? `${purchaseTokens} Tokens` : 'Loading...'}</a> */}
             <div className={styles.addbase}>
               <img className={styles.addimgbase} src={addbase} alt="Add Base" />
               <img className={styles.add} src={add} alt="Add Icon" />
@@ -174,45 +105,16 @@ const Header: React.FC = () => {
           <div className={styles.outerContainer} ref={cardRef}>
             <div className={styles.innerContainer}>
               <h2>Pick number of tokens you want?</h2>
-              {/* <div className={styles.tokenOptions}>
+              <div className={styles.tokenOptions}>
                 <div className={styles.tokenOption}>1 Token</div>
                 <div className={styles.tokenOption}>2 Tokens</div>
                 <div className={styles.tokenOption}>5 Tokens</div>
                 <div className={styles.tokenOption}>10 Tokens</div>
-              </div> */}
-
-                {/* <div className={styles.tokenOptions}>
-                  {[1, 2, 5, 10].map((quantity) => (
-                    <div
-                      key={quantity}
-                      className={styles.tokenOption}
-                      onClick={() => handleTokenPurchase(quantity)}
-                    >
-                      {quantity} Token{quantity > 1 && 's'}
-                    </div>
-                  ))}
-                </div> */}
-                 {/* <button className={styles.buyTokensButton}>
+              </div>
+              <button className={styles.buyTokensButton}>
                 Buy Tokens
                 <img src={money} alt="Buy Icon" className={styles.buttonIcon} />
-              </button> */}
-                <div className={styles.tokenOptions}>
-                  {[1, 2, 5, 10].map((quantity) => (
-                    <a
-                      href="#"
-                      key={quantity}
-                      className={`${styles.tokenOption} ${selectedQuantity === quantity ? styles.selected : ''}`}
-                      onClick={() => setSelectedQuantity(quantity)}
-                    >
-                      {quantity} Token{quantity > 1 && 's'}
-                      </a>
-                  ))}
-                </div>
-             
-              <button className={styles.buyTokensButton} onClick={handleBuyTokens} disabled={selectedQuantity === null}>
-            Buy Tokens
-            <img src={money}  alt="Buy Icon" className={styles.buttonIcon} />
-          </button>
+              </button>
               <div className={styles.securityMessage}>
                 <span>Your security is important to us</span>
                 <img src={Verify} alt="Security Icon" className={styles.securityIcon} />

@@ -30,6 +30,9 @@ const LoginPages = () => {
         const data = await response.json();
         // Store token in local storage or state management
         localStorage.setItem('token', data.token);
+        localStorage.setItem('email', data.user.email)
+        localStorage.setItem('firstName', data.user.first_name)
+        localStorage.setItem('lastName', data.user.last_name)
 
         // Redirect to home page upon successful login
         navigate('/home');
